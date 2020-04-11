@@ -10,7 +10,6 @@ import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
 @app.route('/' , methods = ["GET","POST"] )
-@app.route('/home')
 def home():
     if request.method=="POST":
         file = request.files["file"]
