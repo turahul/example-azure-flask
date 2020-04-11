@@ -10,13 +10,12 @@ import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
 @app.route('/' , methods = ["GET","POST"] )
-@app.route('/home')
 def home():
     if request.method=="POST":
         file = request.files["file"]
-        file.save(os.path.join("uploads",file.filename))
+        #file.save(os.path.join("uploads",file.filename))
         filename = file.filename
-        image = Image.open('uploads/'+ filename)
+        image = Image.open(file)
         model = tensorflow.keras.models.load_model('keras_model.h5')
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         size = (224, 224)
